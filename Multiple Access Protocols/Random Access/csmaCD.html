@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSMA/CD</title>
+	<style type="text/css">
+		.column {
+  	float: left;
+  	width: 16%;
+  	padding: 2px;
+	}
+
+	.row::after {
+  		content: "";
+  		clear: both;
+  		display: inline-block;
+  }
+
+  #animate1 {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    background-color: blue;
+    padding: 5px;
+	}
+
+  </style>
+
+	<script type="text/javascript">
+
+/*
+num5 = not needed.
+num = startx.
+num1 = starty.
+num2 = endx.
+num3 = endy.
+num4 = alignment.
+*/
+
+    function load()
+    {
+        localStorage.clickcount=0;
+
+    }
+    function prime()
+    {
+      var doc_id = document.getElementById("verticle"); 
+          var context = doc_id.getContext("2d"); 
+          context.beginPath(); 
+          context.moveTo(200, 0); 
+          context.strokeStyle = 'darkgreen';
+          context.lineTo(200,440);
+          context.lineWidth = 5; 
+          context.stroke();
+
+          context.beginPath(); 
+          context.moveTo(750, 0); 
+          context.strokeStyle = 'darkgreen'; 
+          context.lineTo(750,440);
+          context.lineWidth = 5; 
+          context.stroke();
+
+          context.beginPath();
+          context.fillStyle = "green";
+          context.strokeStyle='black';
+          context.lineWidth = 4;
+          context.rect(850,10, 300, 200);
+          context.stroke();
+
+          context.font = "20px Arial";
+          context.fillText("Time", 150, 375);
+          context.fillText("t1", 180, 20);
+          context.fillText("t1", 760, 20);
+          context.fillText("t2", 180, 110);
+          context.fillText("t2", 760, 110);
+          context.fillText("t3", 180, 160);
+          context.fillText("t3", 760, 160);
+          context.fillText("t4", 180, 210);
+          context.fillText("t4", 760, 210);
+    }
+    function A()
+    {
+      var doc_id = document.getElementById("verticle"); 
+              var c = doc_id.getContext("2d");
+              c.beginPath(); 
+              c.moveTo(200,10); 
+              c.strokeStyle = 'red'; 
+              c.lineTo(750,200); 
+              c.stroke(); 
+              c.font = "20px Arial";
+              c.fillText("At Time t=0", 930, 50);
+              c.clearRect(890,55,200,40);
+              c.fillText("A Station sends data",900,80);
+    }
+    function B()
+    {
+                    var doc_id = document.getElementById("verticle"); 
+              var c = doc_id.getContext("2d");
+              c.beginPath(); 
+              c.moveTo(400,10); 
+              c.strokeStyle = 'yellow'; 
+              c.lineTo(750,150); 
+              c.stroke();
+              c.beginPath(); 
+              c.moveTo(400,10); 
+              c.strokeStyle = 'yellow'; 
+              c.lineTo(200,100); 
+              c.stroke();
+              c.font = "20px Arial";
+              c.fillText("At Time t=0", 930, 50);
+              c.clearRect(890,55,200,40);
+              c.fillText("B Station sends data",900,80); 
+    }
+    function C()
+    {
+        var doc_id = document.getElementById("verticle"); 
+              var c = doc_id.getContext("2d");
+              c.beginPath(); 
+              c.moveTo(580,10); 
+              c.strokeStyle = 'orange'; 
+              c.lineTo(750,100); 
+              c.stroke();
+              c.beginPath(); 
+              c.moveTo(580,10); 
+              c.strokeStyle = 'orange'; 
+              c.lineTo(200,150); 
+              c.stroke();  
+              c.font = "20px Arial";
+              c.fillText("At Time t=0", 930, 50);
+              c.clearRect(890,55,200,40);
+              c.fillText("C Station sends data",900,80);
+    }
+    function D()
+    {
+      var doc_id = document.getElementById("verticle"); 
+              var c = doc_id.getContext("2d");
+              c.beginPath(); 
+              c.moveTo(750,10); 
+              c.strokeStyle = 'white'; 
+              c.lineTo(200,200); 
+              c.stroke(); 
+              c.font = "20px Arial";
+              c.fillText("At Time t=0", 930, 50);
+              c.clearRect(890,55,200,40);
+              c.fillText("D Station sends data",900,80);
+    }
+    function p(x,y)
+    {
+              var doc_id = document.getElementById("verticle"); 
+              var ctx = doc_id.getContext("2d");
+              ctx.beginPath();
+              ctx.fillStyle = "black";
+              ctx.rect(x,y, 5, 5);
+              ctx.stroke();
+              ctx.fill();
+    }
+    function r()
+    {
+                      var doc_id = document.getElementById("verticle"); 
+              var c = doc_id.getContext("2d");
+              c.clearRect(0,0,verticle.width,verticle.height);
+              localStorage.clickcount=0;
+    }
+    function starprocess()
+    {
+      var chk1 = document.getElementById("s1");
+      var chk2 = document.getElementById("s2");
+      var chk3 = document.getElementById("s3");
+      var chk4 = document.getElementById("s4");
+      var delay = 2000;
+      var buffer = 0;
+      if(typeof(Storage) !== "undefined") 
+        {
+            if (localStorage.clickcount) 
+            {
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            }
+            else 
+            {
+                localStorage.clickcount = 1;
+            }
+          /*  document.getElementById("result").value = localStorage.clickcount ;
+        } 
+        else {
+                document.getElementById("result").value = 0;
+                }*/
+            
+        }
+
+
+          
+
+
+
+          prime()
+          if(chk1.checked== true && chk2.checked== true && chk3.checked== true && chk4.checked== true )
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              B()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+              C()
+            }
+            else if(localStorage.clickcount==4)
+            {
+              D()
+            }
+            else if(localStorage.clickcount==5)
+            {
+                p(308,46)//A and B
+                p(390,76)//A and C
+                p(470,103)//A and D
+                p(483,44)//B and C
+                p(562,73)//B and D
+                p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==6)
+            {
+              r()
+
+            }
+
+          }
+
+          else if(chk1.checked== true && chk2.checked== true && chk3.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              B()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+              C()
+            }
+            else if(localStorage.clickcount==4)
+            {
+                p(308,46)//A and B
+                p(390,76)//A and C
+                //p(470,103)//A and D
+                p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==5)
+            {
+              r()
+
+              }
+
+          }
+          else if(chk1.checked== true && chk2.checked== true && chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              B()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+              D()
+            }
+            else if(localStorage.clickcount==4)
+            {
+                p(308,46)//A and B
+                //p(390,76)//A and C
+                p(470,103)//A and D
+                //p(483,44)//B and C
+                p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==5)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk2.checked== true && chk3.checked== true && chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              B()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              C()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+              D()
+            }
+            else if(localStorage.clickcount==4)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                p(483,44)//B and C
+                p(562,73)//B and D
+                p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==5)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk1.checked== true && chk2.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              B()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk1.checked== true && chk3.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              C()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                //p(308,46)//A and B
+                p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+          else if(chk1.checked== true && chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              D()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk2.checked== true && chk3.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              B()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              C()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk2.checked== true && chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              B()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              D()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                p(562,73)//B and D
+                //p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk3.checked== true && chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              C()
+            }
+            else if(localStorage.clickcount==2)
+            {
+              D()                     
+            }
+            else if(localStorage.clickcount==3)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                p(647,44)//C and D
+                p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("is Collision point", 900, 140);
+            }
+            else if(localStorage.clickcount==4)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk1.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              A()
+            }
+            else if(localStorage.clickcount==2)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                //p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("No colliosion", 900, 140);
+            }
+            else if(localStorage.clickcount==3)
+            {
+              r()
+
+              }
+
+          }
+
+          else if(chk2.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              B()
+            }
+            else if(localStorage.clickcount==2)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                //p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("No colliosion", 900, 140);
+            }
+            else if(localStorage.clickcount==3)
+            {
+              r()
+
+              }
+
+          }
+          else if(chk3.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              C()
+            }
+            else if(localStorage.clickcount==2)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                //p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("No colliosion", 900, 140);
+            }
+            else if(localStorage.clickcount==3)
+            {
+              r()
+
+              }
+
+          }
+          else if(chk4.checked== true)
+          {
+            
+            if(localStorage.clickcount==1)
+            {
+              D()
+            }
+            else if(localStorage.clickcount==2)
+            {
+                //p(308,46)//A and B
+                //p(390,76)//A and C
+                //p(470,103)//A and D
+                //p(483,44)//B and C
+                //p(562,73)//B and D
+                //p(647,44)//C and D
+                //p(875,130)//Note
+                var doc_id = document.getElementById("verticle"); 
+                var c = doc_id.getContext("2d");
+                c.font = "20px Arial";
+                c.fillText("No colliosion", 900, 140);
+            }
+            else if(localStorage.clickcount==3)
+            {
+              r()
+
+              }
+
+          }
+        
+
+
+    }
+
+
+
+
+
+	</script>
+
+</head>
+<body style="background-color: skyblue;" onload="load()">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <header style="padding: 1px; text-align: center;font-family: monospace; font-size: 32px; background-color: rgb(0,255,0); ">Collision of the first bit in CSMA/CD</header>
+  <table style="text-align: left;">
+    <tr>
+      <th colspan="6" rowspan="1">
+        <div style="background: blue; color: white; width: 1000px">
+        <p style="padding: 1px">HOW TO USE? SELECT SYSTEMS FROM CHECKBOX WHEN ALL DATA IS NOT DISPLAYED".</p>
+        </div>
+      </th>
+    </tr>
+
+
+    <tr>
+      <td>
+      <div class="row">
+  <div class="column">
+    <p style="font-size: 20px;">            </p>
+  </div>
+  <div class="column" >
+    <form>
+      <p style="font-size: 20px;">A:<input type="checkbox" id="s1" name="s1" value="System-1" style="height: 20px; width: 20px;">
+        </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">B:<input type="checkbox" id="s2" name="s2" value="System-2" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">C:<input type="checkbox" id="s3" name="s3" value="System-3" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+  <div class="column">
+    <form>
+      <p style="font-size: 20px;">D:<input type="checkbox" id="s4" name="s4" value="System-4" style="height: 20px; width: 20px;">
+      </p>
+    </form>
+  </div>
+</div>
+  </td>
+    </tr>
+
+    <tr>
+      <td>
+       <div class="row">
+  <div class="column">
+    <!--<img src="primary.png" alt="Primary" style="width:50%">-->
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Scondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div class="column">
+    <img src="secondary.png" alt="Secondary" style="width:50%">
+  </div>
+  <div>
+    <form>
+    <input type="button" name="start" value="Start/Next" onclick="starprocess()" style="text-align: center;padding: 15px 32px;font-size: 16px; ">
+  </form>
+  </div>
+</div>
+</td>
+    </tr>
+  </table>
+
+  <canvas id = "horizontal" width="1000" height="50">
+  </canvas>
+  <script type="text/javascript">
+  var horiz_id = document.getElementById("horizontal"); 
+    var ctx = horiz_id.getContext("2d"); 
+    ctx.beginPath(); 
+    ctx.moveTo(0,40); 
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 5; 
+    ctx.lineTo(800,40); 
+    ctx.stroke();
+
+    /*ctx.moveTo(40,0);
+    ctx.lineTo(40,40); 
+    ctx.stroke();*/
+
+    ctx.moveTo(200,0);
+    ctx.lineTo(200,40); 
+    ctx.stroke();
+
+    ctx.moveTo(400,0);
+    ctx.lineTo(400,40); 
+    ctx.stroke();
+
+    ctx.moveTo(580,0);
+    ctx.lineTo(580,40); 
+    ctx.stroke();
+
+    ctx.moveTo(750,0);
+    ctx.lineTo(750,40); 
+    ctx.stroke();
+  </script>
+	<canvas id="verticle" width="1200" height="400"> 
+    </canvas> <br><br>
+</body>
+</html>
