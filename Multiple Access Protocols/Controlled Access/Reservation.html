@@ -37,14 +37,14 @@
 
       ctx.fillStyle = "black";
       ctx.font = "30px Georgia";
-      ctx.fillText("4",800,90);
-      ctx.fillText("3",770,90);
-      ctx.fillText("2",740,90);
-      ctx.fillText("1",710,90);
+      ctx.fillText("1",800,90);
+      ctx.fillText("2",770,90);
+      ctx.fillText("3",740,90);
+      ctx.fillText("4",710,90);
       ctx.fillStyle = "green";
       ctx.fillText("Reservation Frame",700,190);
       ctx.fillStyle = "red";
-      ctx.fillText("The bit stream will look like...",10,50);      
+      ctx.fillText("The bit stream move LEFT to RIGHT.",10,50);      
 
 			var chk1 = document.getElementById("s1");
 			var chk2 = document.getElementById("s2");
@@ -53,9 +53,9 @@
       
       var data=[];			
 
-			if(chk1.checked == true)
+			if(chk4.checked == true)
 			{
-        data.push("1");
+        data.push("4");
         mkBlock(710,100,30,50,"1","green");
 			}
       else
@@ -63,9 +63,9 @@
         mkBlock(710,100,30,50,"0","green"); 
       }
 
-			if(chk2.checked == true)
+			if(chk3.checked == true)
 			{
-        data.push("2");
+        data.push("3");
         mkBlock(740,100,30,50,"1","green"); 	
 			}
       else
@@ -73,9 +73,9 @@
         mkBlock(740,100,30,50,"0","green");
       }
 
-			if(chk3.checked == true)
+			if(chk2.checked == true)
 			{
-        data.push("3");
+        data.push("2");
         mkBlock(770,100,30,50,"1","green");
 			}
       else
@@ -83,9 +83,9 @@
         mkBlock(770,100,30,50,"0","green");
       }
 
-      if(chk4.checked == true)
+      if(chk1.checked == true)
       {
-        data.push("4");
+        data.push("1");
         mkBlock(800,100,30,50,"1","green");
 		  }
       else
