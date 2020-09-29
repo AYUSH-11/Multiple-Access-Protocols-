@@ -343,12 +343,24 @@
           r2.disabled = false;
           r3.disabled = false;
           r4.disabled = false;
-          var dl = parseInt(document.getElementById("dl").value);
-          if(r2.checked == false && r3.checked == false && r4.checked == false)
+
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r2.checked == false && r3.checked == false && r4.checked == false) || dl ==0 )
           {
             setTimeout(function(){ myMoveX(180,50,60,30,770,770,"TOKEN"); },delay);
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"red");
@@ -358,7 +370,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"red");
@@ -369,7 +381,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -404,12 +416,24 @@
         { 
           myMoveY(760,49,60,30,50,50,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r3.checked == false && r4.checked == false)
+
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevX(180,470,60,30,770,770,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"green");
@@ -419,7 +443,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -430,7 +454,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -464,12 +488,23 @@
 
           myMoveRevX(769,470,60,30,770,770,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevX(180,470,60,30,770,770,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"brown");
@@ -479,7 +514,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -490,7 +525,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -524,12 +559,23 @@
 
           myMoveRevY(180,459,60,30,460,460,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r3.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r3.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevY(180,40,60,30,460,460,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -539,7 +585,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -550,7 +596,7 @@
             
           }
 
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -625,12 +671,23 @@
           r2.disabled = false;
           r3.disabled = false;
           r4.disabled = false;
-          var dl = parseInt(document.getElementById("dl").value);
-          if(r2.checked == false && r3.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r2.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveX(180,50,60,30,770,770,"TOKEN"); },delay);
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"red");
@@ -640,7 +697,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"red");
@@ -651,7 +708,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawLine(350,150,650,150,"black");
@@ -686,14 +743,25 @@
         { 
           myMoveRevX(769,50,60,30,770,770,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r3.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevX(180,50,60,30,770,770,"TOKEN"); },delay);
             delay+=6500;
             setTimeout(function(){ myMoveY(180,40,60,30,460,460,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -704,7 +772,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -716,7 +784,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -756,12 +824,23 @@
 
          myMoveRevY(180,469,60,30,470,470,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r3.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r3.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveX(180,470,60,30,770,770,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -772,7 +851,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -784,7 +863,7 @@
             
           }
 
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -820,12 +899,23 @@
 
           myMoveRevY(760,459,60,30,460,460,"TOKEN");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevY(760,50,60,30,460,460,"TOKEN"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -836,7 +926,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
               drawLine(700,200,700,350,"white");
@@ -848,7 +938,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){
             drawLine(700,200,700,350,"white"); 
@@ -925,14 +1015,25 @@
           r2.disabled = false;
           r3.disabled = false;
           r4.disabled = false;
-          var dl = parseInt(document.getElementById("dl").value);
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
           myMoveX(179,50,100,30,180,180,"TO+SA");
           delay = 1300;
-          if(r2.checked == false && r3.checked == false && r4.checked == false)
+          if((r2.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveX(180,50,100,30,770,770,"TO+SA"); },delay);
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,280,"red");
@@ -941,7 +1042,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,280,"red");
@@ -952,7 +1053,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,350,"red");
@@ -985,12 +1086,23 @@
         { 
           myMoveY(760,49,100,30,50,50,"TO+SA");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r3.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveY(760,50,100,30,460,460,"TO+SA"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,280,"green");
@@ -999,7 +1111,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,350,"black");
@@ -1009,7 +1121,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,280,300,350,"green");
@@ -1042,12 +1154,23 @@
 
           myMoveRevX(769,470,100,30,770,770,"TO+SA");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ myMoveRevX(140,470,100,30,770,770,"TO+SA"); },delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,280,"brown");
@@ -1056,7 +1179,7 @@
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,200,300,280,"black");
@@ -1066,7 +1189,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ 
           drawThinLine(300,280,300,350,"brown");
@@ -1097,51 +1220,60 @@
         {
 
 
-          myMoveRevY(180,459,60,30,460,460,"TOKEN");
+          myMoveRevY(140,459,100,30,460,460,"TO+SA");
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r3.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
           {
-            setTimeout(function(){ myMoveRevY(180,40,60,30,460,460,"TOKEN"); },delay);
+            dl = parseInt(document.getElementById("dl").value);
           }
-          if(r1.checked == true)
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r3.checked == false) || dl == 0)
+          {
+            setTimeout(function(){ myMoveRevY(140,40,100,30,460,460,"TO+SA"); },delay);
+          }
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ 
-          drawLine(350,150,650,150,"black");
-          drawLine(300,200,300,350,"blue");
-          drawLine(350,400,650,400,"black");
-          drawLine(700,200,700,350,"black");},delay);
+          drawThinLine(300,200,300,350,"blue");
+          drawThinLine(700,200,700,350,"black");
+          drawThickLine(230,275,750,275,"blue");},delay);
           delay+= parseInt(dl/bndw)*1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ 
-          drawLine(350,150,650,150,"black");
-          drawLine(300,200,300,350,"black");
-          drawLine(350,400,650,400,"blue");
-          drawLine(700,200,700,350,"blue");},delay);
+          drawThinLine(300,200,300,280,"black");    
+          drawThinLine(300,280,300,350,"blue");
+          drawThinLine(700,200,700,280,"blue");
+          drawThickLine(230,275,750,275,"blue");},delay);
           delay+= parseInt(dl/bndw)*1000;
             
           }
 
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
-            setTimeout(function(){ 
-          drawLine(350,150,650,150,"black");
-          drawLine(300,200,300,350,"black");
-          drawLine(350,400,650,400,"blue");
-          drawLine(700,200,700,350,"black");},delay);
+            setTimeout(function(){     
+          drawThinLine(300,280,300,350,"blue");
+          drawThinLine(700,200,700,280,"black");
+          drawThinLine(700,280,700,350,"blue");
+          drawThickLine(230,275,750,275,"blue");},delay);
           delay+= parseInt(dl/bndw)*1000;
           }
 
 
         setTimeout(function(){ 
-          drawLine(350,150,650,150,"black");
-          drawLine(300,200,300,350,"black");
-          drawLine(350,400,650,400,"black");
-          drawLine(700,200,700,350,"black");
-          myMoveRevY(180,40,60,30,460,460,"TOKEN"); },delay);
+          drawThinLine(300,200,300,350,"black");
+          drawThinLine(700,200,700,350,"black");
+          drawThickLine(230,275,750,275,"black");
+          myMoveRevY(140,40,100,30,460,460,"TO+SA"); },delay);
           delay+=4800;
 
             setTimeout(function(){ 
@@ -1193,10 +1325,21 @@
           r2.disabled = false;
           r3.disabled = false;
           r4.disabled = false;
-          var dl = parseInt(document.getElementById("dl").value);
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
           drawtokenBox(260,60,100,30);
           delay = 1300;
-          if(r2.checked == false && r3.checked == false && r4.checked == false)
+          if((r2.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ clearTokenBox(260,60,100,30);
              onTOtwo("yellow");},delay);
@@ -1205,7 +1348,7 @@
             setTimeout(function(){onTOtwo("black");
             drawtokenBox(540,60,100,30);},delay);
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ onTOtwo("red");},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1215,7 +1358,7 @@
           delay+= 1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ onTOthree("red");},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1224,7 +1367,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ onTOfour("red");},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1256,8 +1399,19 @@
         { 
           drawtokenBox(540,60,100,30);
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r3.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r3.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ clearTokenBox(540,60,100,30);
              towTOthree("yellow");},delay);
@@ -1266,7 +1420,7 @@
             setTimeout(function(){towTOthree("black");
             drawtokenBox(540,410,100,30);},delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ towTOone("green")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1274,7 +1428,7 @@
           delay+= 1000;
 
           }
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ towTOthree("green")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1283,7 +1437,7 @@
             
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ towTOfour("green")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1313,8 +1467,19 @@
 
           drawtokenBox(540,410,100,30);
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r4.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r4.checked == false) || dl == 0)
           {
             setTimeout(function(){ clearTokenBox(540,410,100,30);
              threeTOfour("yellow");},delay);
@@ -1323,7 +1488,7 @@
             setTimeout(function(){threeTOfour("black");
             drawtokenBox(260,410,100,30);},delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ threeTOone("brown")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1331,7 +1496,7 @@
           delay+= 1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ threeTOtwo("brown")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1339,7 +1504,7 @@
           delay+= 1000;            
           }
 
-          if(r4.checked == true)
+          if(r4.checked == true && dl>0)
           {
             setTimeout(function(){ threeTOfour("brown")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1370,8 +1535,19 @@
 
           drawtokenBox(260,410,100,30);
           delay =500;
-         var dl = parseInt(document.getElementById("dl").value);
-          if(r1.checked == false && r2.checked == false && r3.checked == false)
+          var dlt = document.getElementById("dl").value;
+          var dl;
+          console.log(dlt.length);
+          if(dlt.length > 0)
+          {
+            dl = parseInt(document.getElementById("dl").value);
+          }
+          else
+          {
+            dl = 0; 
+          }
+
+          if((r1.checked == false && r2.checked == false && r3.checked == false) || dl == 0)
           {
             setTimeout(function(){ clearTokenBox(260,410,100,30);
              fourTOone("yellow");},delay);
@@ -1380,7 +1556,7 @@
             setTimeout(function(){fourTOone("black");
             drawtokenBox(260,60,100,30);},delay);
           }
-          if(r1.checked == true)
+          if(r1.checked == true && dl>0)
           {
             setTimeout(function(){ fourTOone("blue")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1388,7 +1564,7 @@
           delay+= 1000;
 
           }
-          if(r2.checked == true)
+          if(r2.checked == true && dl>0)
           {
             setTimeout(function(){ fourTOtwo("blue")},delay);
           delay+= parseInt(dl/bndw)*1000;
@@ -1396,7 +1572,7 @@
           delay+= 1000;            
           }
 
-          if(r3.checked == true)
+          if(r3.checked == true && dl>0)
           {
             setTimeout(function(){ fourTOthree("blue")},delay);
           delay+= parseInt(dl/bndw)*1000;
